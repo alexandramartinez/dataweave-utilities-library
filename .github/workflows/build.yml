@@ -32,6 +32,6 @@ jobs:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
-        mvn deploy \
+        mvn deploy -DmuleDeploy \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD"
