@@ -27,11 +27,20 @@ jobs:
       with:
         distribution: 'zulu'
         java-version: 8
+    - name: Add repo credentials
+      uses: s4u/maven-settings-action@v2.6.0
+      with:
+        servers: |
+          [{
+           "id": "exchange",
+           "username": "${{ secrets.anypoint_platform_username }}",
+           "password": "${{ secrets.anypoint_platform_password }}"
+          }]
     - name: Deploy to Sandbox
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
-        mvn deploy -DmuleDeploy \
+        mvn deploy \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD"
