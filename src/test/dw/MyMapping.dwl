@@ -3,7 +3,5 @@
 */
 %dw 2.0
 output application/dw
-
-import * from Utilities
 ---
-getString(null) default ""
+""
