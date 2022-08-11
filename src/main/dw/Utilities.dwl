@@ -1,46 +1,33 @@
 %dw 2.0
-/**
-* Converts a given `DateTime` into the given desired format.
-*
-* === Parameters
-*
-* [%header, cols="1,1,3"]
-* |===
-* | Name | Type | Description
-* | `dateTime` | DateTime | This is the provided DateTime
-* | `dateTimeFormat` | String | This is the format in which the DateTime is to be converted
-* |===
-*
-* === Example
-*
-* This example shows how the `dateTimeConversion` function behaves under different inputs.
-*
-* ==== Source
-*
-* [source,DataWeave,linenums]
-* ----
-* %dw 2.0
-* output application/json
-* import dateTimeConversion from DateFormatConversion
-* ---
-* {
-*   one: dateTimeConversion(now(), "dd-MM-yyyy hh:mm:ss a"),
-*   two: dateTimeConversion(now(), "yy-MM-dd"),
-*   three: dateTimeConversion(now(), "hh:mma")
-* }
-* ----
-*
-* ==== Output
-*
-* [source,Json,linenums]
-* ----
-* {
-*   "one": "02-06-2022 02:01:40 PM",
-*   "two": "22-06-02",
-*   "three": "02:01PM"
-* }
-* ----
-*
-*/
-fun dateTimeConversion (dateTime: DateTime, dateTimeFormat: String) = 
-  dateTime as String {format: dateTimeFormat}
+
+import try from dw::Runtime
+
+fun isDate(value: Any): Boolean = try(() -> value as Date).success
+fun isString(value: Any): Boolean = try(() -> value as String).success
+fun isNumber(value: Any): Boolean = try(() -> value as Number).success
+fun isNumberType(value: Any): Boolean = value is Number
+fun isArray(value: Any): Boolean = try(() -> value as Array).success
+fun isObject(value: Any): Boolean = try(() -> value as Object).success
+fun isError(str: String, errorString: String): Boolean = str startsWith errorString
+fun isError(value: Any, errorString: Any = null): Boolean = false
+
+fun getDate(value: Any): Date | Null = (
+    if ( isDate(value) ) value as Date
+    else null
+)
+fun getString(value: Any): String | Null = (
+    if ( isString(value) ) value as String
+    else null
+)
+fun getArray(value: Any): Array | Null = (
+    if ( isArray(value) ) value as Array
+    else null
+)
+fun getNumber(value: Any): Number | Null = (
+    if ( isNumber(value) ) value as Number
+    else null
+) 
+fun getObject(value: Any): Object | Null = (
+	if ( isObject(value) ) value as Object
+	else null
+)
