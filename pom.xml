@@ -116,27 +116,27 @@
 
     <!-- Add Exchange repository to publish your DataWeave library to Exchange -->
     <!-- You can find more reference at https://docs.mulesoft.com/exchange/to-publish-assets-maven#publish-an-asset-to-exchange-using-maven -->
-    <!-- 
+    
     <distributionManagement>
         <repository>
             <id>exchange</id>
             <name>Exchange Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/ORGANIZATION_ID/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/e04b331c-a0d3-4b0b-b40c-55254205c981/maven</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>
-    -->
+    
     <repositories>
         <!-- Add Exchange repository to consume DataWeave library from Exchange -->
         <!-- You can find more reference at https://docs.mulesoft.com/exchange/to-publish-assets-maven#consume-an-exchange-asset-with-maven -->
-        <!--
+        
         <repository>
             <id>exchange</id>
             <name>Exchange Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/ORGANIZATION_ID/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/e04b331c-a0d3-4b0b-b40c-55254205c981/maven</url>
             <layout>default</layout>
         </repository>
-        -->
+        
         <repository>
             <id>mule-releases</id>
             <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases</url>
