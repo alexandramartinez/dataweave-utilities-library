@@ -37,11 +37,5 @@ jobs:
            "password": "${{ secrets.anypoint_platform_password }}"
           }]
     - name: Deploy to Exchange
-      #env:
-       # USERNAME: ${{ secrets.anypoint_platform_username }}
-       # PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
-        mvn deploy 
-#\
-         #-Danypoint.username="$USERNAME" \
-         #-Danypoint.password="$PASSWORD"
+        mvn deploy
