@@ -8,7 +8,7 @@
     <!-- You can find more reference at https://docs.mulesoft.com/exchange/to-publish-assets-maven#publish-an-asset-to-exchange-using-maven -->
     <!-- <groupId>ORGANIZATION_ID</groupId> -->
     <!-- NOTE: Remember to add your Anypoint Platform credentials in ~/.m2/settings.xml file -->
-    <groupId>e04b331c-a0d3-4b0b-b40c-55254205c981</groupId>
+    <groupId>371a3df1-1566-4775-b26d-932a04f9ce05</groupId>
     <artifactId>utilities-library</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>dw-library</packaging>
@@ -121,7 +121,7 @@
         <repository>
             <id>exchange</id>
             <name>Exchange Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/e04b331c-a0d3-4b0b-b40c-55254205c981/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${groupId}/maven</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>
@@ -133,7 +133,7 @@
         <repository>
             <id>exchange</id>
             <name>Exchange Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/e04b331c-a0d3-4b0b-b40c-55254205c981/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${groupId}/maven</url>
             <layout>default</layout>
         </repository>
         
