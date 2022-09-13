@@ -253,22 +253,272 @@ fun isArray(value: Any): Boolean = try(() -> value as Array).success
 */
 fun isObject(value: Any): Boolean = try(() -> value as Object).success
 
+/**
+* Attempts to coerce the given value into a Date format. 
+* Returns `value as Date` if possible or `null` otherwise.
+*
+* === Parameters
+*
+* [%header, cols="1,1,3"]
+* |===
+* | Name | Type | Description
+* | `value` | Any | Value to coerce
+* |===
+*
+* === Example
+*
+* This example shows how the `getDate` function behaves under different inputs.
+*
+* ==== Source
+*
+* [source,DataWeave,linenums]
+* ----
+* %dw 2.0
+* output application/dw
+* import * from Utilities
+* ---
+* {
+*   boolean: getDate(false),
+*   number: getDate(25),
+*   date: getDate(|2020-01-01|),
+*   string: getDate("2020-01-01"),
+*   array: getDate([]),
+*   object: getDate({})
+* }
+*
+* ----
+*
+* ==== Output
+*
+* [source,Json,linenums]
+* ----
+* {
+*   boolean: null,
+*   number: null,
+*   date: |2020-01-01|,
+*   string: |2020-01-01|,
+*   array: null,
+*   object: null
+* }
+* ----
+*
+*/
 fun getDate(value: Any): Date | Null = (
     if ( isDate(value) ) value as Date
     else null
 )
+/**
+* Attempts to coerce the given value into a String format. 
+* Returns `value as String` if possible or `null` otherwise.
+*
+* === Parameters
+*
+* [%header, cols="1,1,3"]
+* |===
+* | Name | Type | Description
+* | `value` | Any | Value to coerce
+* |===
+*
+* === Example
+*
+* This example shows how the `getString` function behaves under different inputs.
+*
+* ==== Source
+*
+* [source,DataWeave,linenums]
+* ----
+* %dw 2.0
+* output application/dw
+* import * from Utilities
+* ---
+* {
+*   boolean: getString(false),
+*   number: getString(25),
+*   date: getString(|2020-01-01|),
+*   string: getString("hello"),
+*   array: getString([]),
+*   object: getString({})
+* }
+*
+* ----
+*
+* ==== Output
+*
+* [source,Json,linenums]
+* ----
+* {
+*   boolean: "false",
+*   number: "25",
+*   date: "2020-01-01",
+*   string: "hello",
+*   array: null,
+*   object: null
+* }
+* ----
+*
+*/
 fun getString(value: Any): String | Null = (
     if ( isString(value) ) value as String
     else null
 )
+/**
+* Attempts to coerce the given value into an Array format. 
+* Returns `value as Array` if possible or `null` otherwise.
+*
+* === Parameters
+*
+* [%header, cols="1,1,3"]
+* |===
+* | Name | Type | Description
+* | `value` | Any | Value to coerce
+* |===
+*
+* === Example
+*
+* This example shows how the `getArray` function behaves under different inputs.
+*
+* ==== Source
+*
+* [source,DataWeave,linenums]
+* ----
+* %dw 2.0
+* output application/dw
+* import * from Utilities
+* ---
+* {
+*   boolean: getArray(false),
+*   number: getArray(25),
+*   date: getArray(|2020-01-01|),
+*   string: getArray("hello"),
+*   array: getArray([]),
+*   object: getArray({})
+* }
+*
+* ----
+*
+* ==== Output
+*
+* [source,Json,linenums]
+* ----
+* {
+*   boolean: null,
+*   number: null,
+*   date: null,
+*   string: null,
+*   array: [],
+*   object: null
+* }
+* ----
+*
+*/
 fun getArray(value: Any): Array | Null = (
     if ( isArray(value) ) value as Array
     else null
 )
+/**
+* Attempts to coerce the given value into an Number format. 
+* Returns `value as Number` if possible or `null` otherwise.
+*
+* === Parameters
+*
+* [%header, cols="1,1,3"]
+* |===
+* | Name | Type | Description
+* | `value` | Any | Value to coerce
+* |===
+*
+* === Example
+*
+* This example shows how the `getNumber` function behaves under different inputs.
+*
+* ==== Source
+*
+* [source,DataWeave,linenums]
+* ----
+* %dw 2.0
+* output application/dw
+* import * from Utilities
+* ---
+* {
+*   boolean: getNumber(false),
+*   number: getNumber(25),
+*   date: getNumber(|2020-01-01|),
+*   string: getNumber("25"),
+*   array: getNumber([]),
+*   object: getNumber({})
+* }
+*
+* ----
+*
+* ==== Output
+*
+* [source,Json,linenums]
+* ----
+* {
+*   boolean: null,
+*   number: 25,
+*   date: null,
+*   string: 25,
+*   array: null,
+*   object: null
+* }
+* ----
+*
+*/
 fun getNumber(value: Any): Number | Null = (
     if ( isNumber(value) ) value as Number
     else null
 ) 
+/**
+* Attempts to coerce the given value into an Object format. 
+* Returns `value as Object` if possible or `null` otherwise.
+*
+* === Parameters
+*
+* [%header, cols="1,1,3"]
+* |===
+* | Name | Type | Description
+* | `value` | Any | Value to coerce
+* |===
+*
+* === Example
+*
+* This example shows how the `getObject` function behaves under different inputs.
+*
+* ==== Source
+*
+* [source,DataWeave,linenums]
+* ----
+* %dw 2.0
+* output application/dw
+* import * from Utilities
+* ---
+* {
+*   boolean: getObject(false),
+*   number: getObject(25),
+*   date: getObject(|2020-01-01|),
+*   string: getObject("{}"),
+*   array: getObject([]),
+*   object: getObject({})
+* }
+*
+* ----
+*
+* ==== Output
+*
+* [source,Json,linenums]
+* ----
+* {
+*   boolean: null,
+*   number: null,
+*   date: null,
+*   string: null,
+*   array: null,
+*   object: {}
+* }
+* ----
+*
+*/
 fun getObject(value: Any): Object | Null = (
 	if ( isObject(value) ) value as Object
 	else null
