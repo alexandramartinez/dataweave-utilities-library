@@ -1,8 +1,12 @@
-/**
-* This mapping won't be shared through your library, but you can use it to try out your module and create integration tests.
-*/
 %dw 2.0
-output application/json
+output application/dw
 import * from Utilities
 ---
-isDate("2020-01-01")
+{
+  boolean: getObject(false),
+  number: getObject(25),
+  date: getObject(|2020-01-01|),
+  string: getObject("{}"),
+  array: getObject([]),
+  object: getObject({})
+}
